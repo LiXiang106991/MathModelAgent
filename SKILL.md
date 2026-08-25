@@ -1,10 +1,10 @@
 ---
 name: 1start-mathmodel
-description: "数学建模竞赛工作流入口。用于启动完整建模流程：询问用户偏好，生成 plan.md 和 todo.md，并按阶段调用赛题分析、建模、代码与图表、流程图、论文撰写、验证验收等 skills。"
+description: "数学建模国赛（CUMCM）工作流入口。用于启动完整建模流程：询问用户偏好，生成 plan.md 和 todo.md，并按阶段调用赛题分析、建模、代码与图表、流程图、论文撰写、验证验收等 skills。"
 allowed-tools: Bash(*), Read, Write, Edit, Grep, Glob, Agent, WebSearch, WebFetch
 ---
 
-# 数学建模工作流
+# 数学建模国赛（CUMCM）工作流
 
 本 skill 是数学建模竞赛项目的总控入口。它不替代后续阶段 skill，而是负责启动流程、询问偏好、记录决策、生成计划，并按顺序调用各阶段 skill。
 
@@ -27,9 +27,9 @@ allowed-tools: Bash(*), Read, Write, Edit, Grep, Glob, Agent, WebSearch, WebFetc
 
 优先询问（按重要性排序）：
 
-1. **排版引擎**：Typst 还是 LaTeX？— 决定 5writing 使用哪套模板和编译命令。两套引擎均覆盖全部模板（14 中 + 3 英）。Typst 使用 `typst` 命令编译；LaTeX 使用 `xelatex` 命令编译（需跑两遍解决交叉引用）。
-2. **竞赛类型**：国赛/华为杯/华中杯/MCM/...— 决定模板选择，见 5writing 的模板族清单。
-3. **论文语言**：中文/英文 — MCM/ICM/COMAP 强制英文，其他默认中文。
+1. **排版引擎**：Typst 还是 LaTeX？— 决定 5writing 使用哪套模板和编译命令。两套引擎均覆盖国赛 cumcm 模板。Typst 使用 `typst` 命令编译；LaTeX 使用 `xelatex` 命令编译（需跑两遍解决交叉引用）。
+2. **赛题类型**：国赛 A / B / C 题 — 决定建模方向与论文章节展开方式。
+3. **论文语言**：中文 / 英文 — 国赛默认中文。
 4. **子问题数量是否已知**：影响章节文件生成数量。若未知，由 2analysis-modeling 阶段根据题面确定。
 
 将用户的选择记录到 `plan.md` 的"方案"小节中。
@@ -46,7 +46,7 @@ allowed-tools: Bash(*), Read, Write, Edit, Grep, Glob, Agent, WebSearch, WebFetc
 
 用户偏好：
 - 排版引擎：<Typst / LaTeX>
-- 竞赛类型：<国赛 / 华为杯 / MCM / ...>
+- 赛题类型：<国赛 A / B / C>
 - 论文语言：<中文 / 英文>
 - 子问题数量：<已知 N 个 / 待分析确定>
 
