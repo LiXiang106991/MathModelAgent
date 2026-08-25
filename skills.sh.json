@@ -1,6 +1,6 @@
 {
   "title": "MathModelAgent Skills",
-  "description": "数学建模竞赛全流程自动化 Skills：从赛题分析、建模、编码、绘图到论文撰写与验证。",
+  "description": "数学建模国赛（CUMCM）全流程自动化 Skills：赛题分析、建模、编码绘图、论文撰写（LaTeX/Typst）与验证验收。",
   "sections": [
     {
       "title": "工作流 Skills（按顺序使用）",
@@ -18,13 +18,17 @@
       "skills": [
         "doctor",
         "typst-author",
-        "math-model-selection"
+        "math-model-selection",
+        "mathmodel-figure-templates"
       ]
     },
     {
-      "title": "内部依赖",
+      "title": "知识库与内部依赖",
       "skills": [
-        "_references"
+        "math-model-method.md",
+        "_references",
+        "mathmodel-writing-template.md",
+        "main.tex"
       ]
     }
   ]

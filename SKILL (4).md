@@ -14,6 +14,9 @@ allowed-tools: Bash(*), Read, Write, Edit, Grep, Glob, Agent, WebSearch, WebFetc
 
 如需领域判断，读取 `../_references/math_modeling_norms.md` 中的“论文写作”“图表与可视化”和“非数据图工具选择”小节。该文件只作为规范知识库，论文结构仍按比赛模板和当前赛题内容决定。
 
+## 数学建模论文写作具体参考
+本 skill 是一套工程执行工作流，只负责图片插入、模板选用、编译命令、章节拆分等，并非内容层面的写作教程，具体的模型描述与选择，赛题分析，各部分内容编写和论文排版书写格式请遵循 `mathmodel-writing-template`和 `main.tex`
+
 ## 模板族
 
 本技能内捆绑的模板位于：
@@ -34,13 +37,7 @@ apmcm, changsanjiao, cumcm, default, diangongbei, dongsansheng,
 huashubei, huaweibei, huazhongbei, mathorcup, mcm, shuweibei, stats, wuyibei
 ```
 
-华为杯、华中杯、五一杯统一使用 `huaweibei`、`huazhongbei`、`wuyibei` 作为模板。
 
-支持的英文模板（Typst + LaTeX 双版本）：
-
-```text
-apmcm, default, mcm
-```
 
 论文中的所有数值图表结论必须来自 `reports/RESULTS_REPORT.md` 或 `figures/*`。不得编造、估算或使用不同的四舍五入方式。
 
@@ -171,7 +168,7 @@ fig_pipeline.pdf -> 数据预处理/方法节
 A_code.typ         - 附录代码
 ```
 
-国赛/华中杯/华为杯（`cumcm`、`huazhongbei`、`huaweibei`）按以下章节结构：
+国赛（`cumcm`）按以下章节结构：
 
 ```text
 1_restatement.typ
@@ -187,78 +184,7 @@ A_code.typ         - 附录代码
 A_code.typ
 ```
 
-东三省模板（`dongsansheng`）额外使用单独摘要文件：
 
-```text
-abstract.typ
-1_restatement.typ
-2_analysis.typ
-3_assumptions.typ
-4_symbols.typ
-5_problem1.typ
-6_problem2.typ
-7_problem3.typ
-...       - 根据题目调整问题数量
-8_evaluation.typ
-A_code.typ
-```
-
-数维杯模板（`shuweibei`）保留原 LaTeX 的示例入口命名：
-
-```text
-Abstract.typ
-Introduction.typ
-2_analysis.typ
-3_assumptions.typ
-4_symbols.typ
-5_problem1.typ
-6_problem2.typ
-7_problem3.typ
-...      - 根据题目调整问题数量
-8_evaluation.typ
-Appendices1.typ
-A_code.typ
-```
-
-中文默认模板（`default`）：
-
-```text
-1_restatement.typ
-2_assumptions.typ
-3_symbols.typ
-4_problem1.typ
-5_problem2.typ
-6_problem3.typ
-...      - 根据题目调整问题数量
-7_sensitivity.typ
-8_evaluation.typ
-A_code.typ
-```
-
-中文统计建模各节文件：
-
-```text
-1_introduction.typ
-2_method.typ
-3_data.typ
-4_analysis.typ
-5_results.typ
-6_conclusion.typ
-A_code.typ
-```
-
-英文 MCM/APMCM 各节文件（`en/mcm`、`en/apmcm`、`zh/mcm`、`zh/apmcm`）：
-
-```text
-1_introduction.typ
-2_assumptions.typ
-3_model_design.typ
-4_solution.typ
-5_sensitivity.typ
-6_strengths_weaknesses.typ
-7_conclusions.typ
-A_code.typ
-```
 
 **LaTeX 模板章节文件**（对应 `-latex` 后缀模板，结构与 Typst 版本一一对应）：
 
