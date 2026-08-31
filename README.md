@@ -59,9 +59,31 @@
 
 ### 方法知识库（`math-model-method.md`）
 
-优化（线性/整数/非线性规划、最短路、最小费用最大流、TSP、模拟退火、遗传算法、NSGA-II）、预测（线性回归、灰色预测 GM(1,1)、时间序列、决策树/随机森林）、评价（AHP、熵权法、TOPSIS、灰色关联）三类方法文档，**内置 9 个可直接运行的 Python 实现**：
+覆盖五大类方法：
 
-`ahp.py`、`entropy_topsis.py`、`grey_relation.py`、`grey_prediction.py`、`nsga2.py`、`random-forest.py`、`simulated.py`、`shortest-pash.py`、`linear_regression_utils.py`
+| 类别 | 方法 |
+| --- | --- |
+| 优化类 | 线性/整数/非线性规划、最短路、最小费用最大流、TSP、模拟退火、遗传算法、NSGA-II |
+| 预测类 | 线性回归、灰色预测 GM(1,1)、时间序列、决策树/随机森林、**XGBoost**、**LSTM** |
+| 评价类 | AHP、熵权法、TOPSIS、灰色关联 |
+| 降维与特征类 | **主成分分析 PCA**（12 步闭环，含适用与禁用场景） |
+| 综合类 | 模拟仿真、博弈论、排队论、元胞自动机、马尔科夫链 |
+
+**内置 11 个可直接运行的 Python 实现**：
+
+`ahp.py`、`entropy_topsis.py`、`grey_relation.py`、`grey_prediction.py`、`nsga2.py`、`random-forest.py`、`simulated.py`、`shortest-pash.py`、`linear_regression_utils.py`、`xgboost_demo.py`、`LSTM_Model_Solver.py`
+
+### 数据工具链（`mathmodel-data-tools`）
+
+面向数据类赛题（尤其 C 题）的三件套，**不绑定任何赛题**，任何年份的附件都能直接用：
+
+| 工具 | 作用 |
+| --- | --- |
+| `gen_data_profile.py` | 数据画像生成器：一次生成结构化 `.md`，AI 不读全量数据也能看懂数据结构 |
+| `query_data.py` | 按需查询助手：describe / group / filter / expr 四种模式，每个数字现场从原始数据算 |
+| `l1_build.py` + `l1_loader.py` | L1 中间层：把任意 xlsx/csv 预聚合成缓存表，建模脚本秒级读取（实测 38MB xlsx 由约 120 秒降至 0.06 秒） |
+
+采用**四层数据架构**（L0 数据字典 / L1 聚合表 / L2 原始明细 / L3 结果表），核心原则是"摘要用于理解，绝不用于计算"，从机制上避免数值幻觉。L1 构建器靠自动检测识别日期/度量/id/标记/分组列，关键角色均可显式覆盖。
 
 ### 工具技能
 
@@ -70,6 +92,16 @@
 | `doctor` | 环境自检与安装向导：检测 typst / xelatex / python3 / drawio 及 Python 包是否就绪，缺失项按平台给出安装命令 |
 | `typst-author` | Typst 文档写作辅助（语法、格式、编译排错） |
 | `mathmodel-figure-templates` | 内置 11 个科研可视化绘图模板（配对云雨图、交叉验证 ROC、泰勒图、SHAP 蜂群柱状图、和弦图等），一键复刻 |
+| `mathmodel-data-tools` | 数据工具链（见上），赛题数据的画像、查询与 L1 中间层 |
+
+### 参考文档（供技能按需读取）
+
+| 文件 | 内容 |
+| --- | --- |
+| `SPSS_数学建模国赛技能手册.md` + `.json` | SPSS 统计分析六大模块：操作教学、结果解读、论文呈现、方法选择、语法提效、工具对比。`3coding-visual` 在做回归/预测时按需调用 |
+| `数据应对手册.md` | 数据处理**战术手册**：任何赛题、任何年份通用的完整数据流程 |
+| `综合类算法说明.md` | 模拟仿真、博弈论、排队论、元胞自动机、马尔科夫链等跨领域算法说明 |
+| `国赛论文_模型建立书写模板.md` | 基于 2020–2024 国赛国一论文提炼的「模型建立」章节写作模板，`5writing` 依据之一 |
 
 ### 内部依赖
 
@@ -106,9 +138,14 @@
 | `typst-author.md` | `typst-author/SKILL.md` |
 | `math-model-selection.md` | `math-model-selection/SKILL.md` |
 | `mathmodel-figure-templates.md` | `mathmodel-figure-templates/SKILL.md` |
+| `mathmodel-data-tools.md` | `mathmodel-data-tools/SKILL.md` |
+| `tools/` | `mathmodel-data-tools/tools/`（数据工具脚本） |
 | `math-model-method.md/` | `math-model-method.md/`（知识库目录） |
 | `math_modeling_norms.md` | `_references/SKILL.md`（共享规范） |
-| `mathmodel-writing-template.md`、`main.tex` | `5writing/`（国赛写作模板与 LaTeX 模板） |
+| `mathmodel-writing-template.md`、`国赛论文_模型建立书写模板.md`、`main.tex` | `5writing/`（国赛写作模板与 LaTeX 模板） |
+| `SPSS_数学建模国赛技能手册.md`、`.json` | `_references/`（SPSS 统计分析手册） |
+| `数据应对手册.md` | `_references/`（数据处理战术手册） |
+| `综合类算法说明.md` | `_references/`（综合类算法说明） |
 
 ### 方式 A：项目级安装（推荐）
 
@@ -128,6 +165,7 @@ $map = @{
   "typst-author.md"          = "typst-author"
   "math-model-selection.md"  = "math-model-selection"
   "mathmodel-figure-templates.md" = "mathmodel-figure-templates"
+  "mathmodel-data-tools.md"  = "mathmodel-data-tools"
 }
 foreach ($k in $map.Keys) {
   $d = Join-Path $dest $map[$k]
@@ -135,9 +173,13 @@ foreach ($k in $map.Keys) {
   Copy-Item $k (Join-Path $d "SKILL.md") -Force
 }
 Copy-Item "math-model-method.md" (Join-Path $dest "math-model-method.md") -Recurse -Force
+Copy-Item "tools" (Join-Path $dest "mathmodel-data-tools\tools") -Recurse -Force
 New-Item -ItemType Directory -Force -Path (Join-Path $dest "_references") | Out-Null
 Copy-Item "math_modeling_norms.md" (Join-Path $dest "_references\SKILL.md") -Force
-Copy-Item "mathmodel-writing-template.md", "main.tex" (Join-Path $dest "5writing") -Force
+Copy-Item "SPSS_数学建模国赛技能手册.md", "SPSS_数学建模国赛技能手册.json", `
+          "数据应对手册.md", "综合类算法说明.md" (Join-Path $dest "_references") -Force
+Copy-Item "mathmodel-writing-template.md", "国赛论文_模型建立书写模板.md", "main.tex" `
+          (Join-Path $dest "5writing") -Force
 ```
 
 ```bash
@@ -154,6 +196,7 @@ map=(
   "typst-author.md:typst-author"
   "math-model-selection.md:math-model-selection"
   "mathmodel-figure-templates.md:mathmodel-figure-templates"
+  "mathmodel-data-tools.md:mathmodel-data-tools"
 )
 mkdir -p "$dest"
 for entry in "${map[@]}"; do
@@ -162,9 +205,12 @@ for entry in "${map[@]}"; do
   cp "$src" "$dest/$name/SKILL.md"
 done
 cp -r "math-model-method.md" "$dest/"
+cp -r "tools" "$dest/mathmodel-data-tools/tools"
 mkdir -p "$dest/_references"
 cp "math_modeling_norms.md" "$dest/_references/SKILL.md"
-cp "mathmodel-writing-template.md" "main.tex" "$dest/5writing/"
+cp "SPSS_数学建模国赛技能手册.md" "SPSS_数学建模国赛技能手册.json" \
+   "数据应对手册.md" "综合类算法说明.md" "$dest/_references/"
+cp "mathmodel-writing-template.md" "国赛论文_模型建立书写模板.md" "main.tex" "$dest/5writing/"
 ```
 
 ### 方式 B：用户级安装（全局可用）
@@ -231,7 +277,8 @@ dest="$HOME/.claude/skills"
 
 - `/typst-author` — 需要 Typst 写作帮助时
 - `/math-model-selection` — 需要国赛模型选型建议时
-- `/math-modeling-methods` — 需要查阅优化/预测/评价方法知识库或直接调用内置 Python 实现时
+- `/math-modeling-methods` — 需要查阅五类方法知识库或直接调用内置 Python 实现时
+- `/mathmodel-data-tools` — 附件数据量大、需要生成数据画像、精确取数或构建 L1 中间层时
 
 ---
 
@@ -301,12 +348,16 @@ doctor.md               → doctor（环境检查）
 typst-author.md         → typst-author（Typst 辅助）
 math-model-selection.md → math-model-selection（国赛模型选择库 + B/C 题关键词匹配）
 mathmodel-figure-templates.md → mathmodel-figure-templates（11 个科研绘图模板）
+mathmodel-data-tools.md → mathmodel-data-tools（数据工具链技能入口）
 
-math-model-method.md/   → 方法知识库（优化/预测/评价三类 + Python 实现）
+math-model-method.md/   → 方法知识库（五类方法 + 11 个 Python 实现）
 │   ├── all in.md          知识库索引
 │   ├── optimization.md    优化类方法文档
 │   ├── prediction.md      预测类方法文档
 │   ├── evaluation.md      评价类方法文档
+│   ├── xgboost_skill.md   XGBoost 建模技能手册
+│   ├── LSTM_Model_Skill.md LSTM 模型技能文档
+│   ├── PCA建模Skill技能片段_全流程版.md  PCA 12 步闭环
 │   ├── ahp.py             层次分析法实现（含一致性检验）
 │   ├── entropy_topsis.py  熵权法 + TOPSIS 实现
 │   ├── grey_relation.py   灰色关联分析实现
@@ -315,11 +366,26 @@ math-model-method.md/   → 方法知识库（优化/预测/评价三类 + Pytho
 │   ├── random-forest.py   决策树 / 随机森林实现
 │   ├── simulated.py       模拟退火实现
 │   ├── shortest-pash.py   最短路实现
-│   └── linear_regression_utils.py 线性回归工具
+│   ├── linear_regression_utils.py 线性回归工具
+│   ├── xgboost_demo.py    XGBoost 完整建模示例
+│   └── LSTM_Model_Solver.py LSTM 时序建模求解器
+
+tools/                  → 数据工具链脚本（配合 mathmodel-data-tools 技能）
+│   ├── README.md          三个工具的完整命令参考
+│   ├── csv_io.py          共享底层：编码识别 + 紧凑 markdown 输出
+│   ├── gen_data_profile.py 工具1：数据画像生成器
+│   ├── query_data.py      工具2：按需查询助手
+│   ├── l1_build.py        工具3：L1 中间层构建器
+│   ├── l1_loader.py       L1 表快速读取器（建模脚本用）
+│   └── test_tools.py      7 项冒烟测试
 
 mathmodel-writing-template.md → 国赛论文写作规范蒸馏版（5writing 依据）
+国赛论文_模型建立书写模板.md    → 「模型建立」章节写作模板（基于国一论文提炼）
 main.tex                    → 国赛 LaTeX 模板（对应 Typst zh/cumcm）
 math_modeling_norms.md      → _references 共享规范知识库
+SPSS_数学建模国赛技能手册.md/.json → SPSS 统计分析六大模块手册
+数据应对手册.md              → 数据处理战术手册（任何赛题通用）
+综合类算法说明.md            → 模拟仿真/博弈论/排队论/元胞自动机/马尔科夫链
 skills.sh.json              → 技能索引清单
 ```
 
