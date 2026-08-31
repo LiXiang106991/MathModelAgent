@@ -19,16 +19,29 @@
         "doctor",
         "typst-author",
         "math-model-selection",
-        "mathmodel-figure-templates"
+        "mathmodel-figure-templates",
+        "mathmodel-data-tools"
       ]
     },
     {
       "title": "知识库与内部依赖",
       "skills": [
         "math-model-method.md",
+        "tools",
         "_references",
         "mathmodel-writing-template.md",
+        "国赛论文_模型建立书写模板.md",
         "main.tex"
+      ]
+    },
+    {
+      "title": "参考文档（供技能按需读取）",
+      "skills": [
+        "SPSS_数学建模国赛技能手册.md",
+        "SPSS_数学建模国赛技能手册.json",
+        "数据应对手册.md",
+        "综合类算法说明.md",
+        "math_modeling_norms.md"
       ]
     }
   ]

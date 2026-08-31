@@ -23,3 +23,18 @@ desktop.ini
 # ---- IDE ----
 .idea/
 .vscode/
+
+# ---- 本机配置（含 API key / 绝对路径，禁止提交）----
+.claude/settings.json
+.claude/settings.local.json
+.env
+.env.*
+
+# ---- 赛题运行产物（由工作流技能生成，不入技能仓库）----
+code/
+results/
+figures/
+paper/
+reports/
+l1/
+plan.md
